@@ -3,19 +3,15 @@ import java.util.*;
  * @author Dylan Pratt
  * @version 109
  */
-public class Sort
+public class MySort
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
      * Constructor for objects of class Sort
      */
     public static void main(){
         ArrayList<Integer> list = new ArrayList<Integer>();
-        for(int lod = 0; lod<21; lod++){
+        for(int lod = 0; lod<12; lod++){
             list.add((int)(Math.random()*10+1));
-            lod++;
         }
         listPrint(list);
         sort(list);
