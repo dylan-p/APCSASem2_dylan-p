@@ -9,7 +9,7 @@ public class ArrayListGorithms
         compareCount = 0; 
         swapCount = 0;
         ArrayList<Integer> list = new ArrayList<Integer>();
-        for(int lod = 0; lod<12; lod++){
+        for(int lod = 0; lod<50000; lod++){
             list.add((int)(Math.random()*10+1));
         }
         listPrint(list);
