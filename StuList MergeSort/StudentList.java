@@ -290,13 +290,13 @@ public class StudentList
         }
     }
 
-    public static void mergeSort(int[] a, int n) {
+    public static void mergeSort(Student[] a, int n) {
         if (n < 2){
             return;
         }
         int mid = n / 2;
-        int[] l = new int[mid];
-        int[] r = new int[n - mid];
+        Student[] l = new Student[mid];
+        Student[] r = new Student[n - mid];
         for (int i = 0; i < mid; i++) {
             l[i] = a[i];
         }
@@ -308,18 +308,10 @@ public class StudentList
         merge(a, l, r, mid, n - mid);
     }
 
-    public static int[] getStuIDs(){
-        int [] ids = new int[studentList.size()];
-        for(int i = 0; i< studentList.size(); i++){
-            ids[i] = studentList.get(i).getStuNum();
-        }
-        return ids;
-    }
-
-    public static void merge(int[] a, int[] l, int[] r, int left, int right) {
+    public static void merge(Student[] a, Student[] l, Student[] r, int left, int right) {
         int i = 0, j = 0, k = 0;
         while (i < left && j < right) {
-            if (l[i] <= r[j]) {
+            if (l[i].getStuNum() <= r[j].getStuNum()) {
                 a[k++] = l[i++];
             }else {
                 a[k++] = r[j++];
@@ -330,19 +322,36 @@ public class StudentList
     }
 
     public void sortList(){
-        int[] ids = this.getStuIDs();
-        mergeSort(ids, ids.length);
-        for(int i =0; i<ids.length; i++){
-            System.out.println(ids[i]);
+        Student[] tempRay = new Student[studentList.size()];
+        for(int i = 0; i<studentList.size(); i++){
+            tempRay[i] = studentList.get(i);
         }
+
+        mergeSort(tempRay, tempRay.length);
+        for(int i =0; i<tempRay.length; i++){
+            System.out.println(tempRay[i].getStuNum());
+        }
+
+        for(int i = 0; i<studentList.size(); i++){
+            studentList.set(i, tempRay[i]);
+        }
+
     }
-    
-    public void searchList(int a){
-        int[] ids = this.getStuIDs();
-        for(int i=0; i<ids.length; i++){
-            if(ids[i] == a){
-                 System.out.println(i);
+
+    public void searchList(int a, int[] sortedArray, int key, int low, int high){
+        int index = Integer.MAX_VALUE;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (sortedArray[mid] < key) {
+                low = mid + 1;
+            } else if (sortedArray[mid] > key) {
+                high = mid - 1;
+            } else if (sortedArray[mid] == key) {
+                index = mid;
+                break;
             }
         }
+        return index;
     }
 }

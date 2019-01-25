@@ -59,7 +59,7 @@ public class StudentListRunner extends StudentList
             if(loopVar==9){
                 System.out.println("What would you like to search for?");
                 int newVar = menuNumber();
-                runnerObject.searchList(newVar);
+                //runnerObject.searchList(newVar);
             }
         }
     }
