@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Mario
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Main\ here.\r\n\r\n\ @author\ Dylan\ Pratt\r\n\ @version\ 129\r\n
+comment1.params=_speed\ _catchphrase
+comment1.target=Mario(int,\ java.lang.String)
+comment2.params=doubler
+comment2.target=void\ setSpeed(int)
+numComments=3
