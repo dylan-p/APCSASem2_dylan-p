@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class Student here.
  *
@@ -352,6 +351,12 @@ public class StudentList
                 break;
             }
         }
-        return index;
+            for(int i = 0; i<studentList.size(); i++){
+                if(i == index){
+                    System.out.println(studentList.get(i).getFullName());
+                    System.out.println(studentList.get(i).getGPA());
+                    System.out.println(studentList.get(i).getStuNum());
+                }
+            }
     }
 }
