@@ -1,7 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-public class CanvasComponent extends JComponent implements MouseListener, MouseMotionListener
+public class CanvasComponent extends JComponent 
+implements MouseListener, MouseMotionListener, ActionListener, KeyListener
 {
     int x;
     int y;
@@ -10,6 +11,12 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     int mouseFromX;
     int mouseFromY;
     boolean shapeSelected;
+    int animationDeltaX = 1;
+    int animationDeltaY = 0;
+    int gutterX = 10;
+    int gutterY = 10;
+    Timer animationTimer;
+    int motionSpeed = 1;
 
     public CanvasComponent(int _width, int _height)
     {
@@ -18,12 +25,12 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
         setSize(width, height);
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
+        animationTimer = new Timer(20, this);
+        animationTimer.start();
     }
 
     protected void paintComponent(Graphics g){
         g.setColor(Color.green);
-        x = 265;
-        y = 265;
         g.fillRect(x, y, width, height);
     } 
 
@@ -65,5 +72,56 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
 
     public void mouseMoved(MouseEvent e){
 
+    }
+
+    public void actionPerformed(ActionEvent e){
+        Dimension componentSizeDimension = getSize();
+        if(x + gutterX + width > 525){
+            animationDeltaX = 0;
+            animationDeltaY = -1;
+            x += animationDeltaX*motionSpeed;
+            y += animationDeltaY*motionSpeed;
+        }
+        if(y + gutterY + height>525){
+            animationDeltaX = -1;
+            animationDeltaY = 0;
+            x += animationDeltaX*motionSpeed;
+            y += animationDeltaY*motionSpeed;
+        }
+        if(x<gutterX){
+            animationDeltaX = 1;
+            animationDeltaY = 1;
+            x += animationDeltaX*motionSpeed;
+            y += animationDeltaY*motionSpeed;
+        }
+        if(y<gutterY){
+            animationDeltaX = 1;
+            animationDeltaY = 0;
+            x += animationDeltaX*motionSpeed;
+            y += animationDeltaY*motionSpeed;
+        }
+        else{
+            x += animationDeltaX*motionSpeed;
+            y += animationDeltaY*motionSpeed;
+        }
+        repaint();
+    }
+    
+    public void keyTyped(KeyEvent e){
+        char keyChar = e.getKeyChar();
+        if(keyChar == '+'){
+            motionSpeed+=1;
+        }
+        if(keyChar == '-'){
+            motionSpeed+=-1;
+        }
+    }
+    
+    public void keyPressed(KeyEvent e){
+    
+    }
+    
+    public void keyReleased(KeyEvent e){
+    
     }
 }
