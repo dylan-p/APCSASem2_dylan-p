@@ -4,6 +4,7 @@ import java.awt.event.*;
 public class CanvasComponent extends JComponent 
 implements MouseListener, MouseMotionListener, ActionListener, KeyListener
 {
+    //declares and initializes global variables
     int x;
     int y;
     int width = 125;
@@ -17,7 +18,7 @@ implements MouseListener, MouseMotionListener, ActionListener, KeyListener
     int gutterY = 10;
     Timer animationTimer;
     int motionSpeed = 1;
-
+    //Sets up the timer and other values
     public CanvasComponent(int _width, int _height)
     {
         width = _width;
@@ -28,7 +29,7 @@ implements MouseListener, MouseMotionListener, ActionListener, KeyListener
         animationTimer = new Timer(20, this);
         animationTimer.start();
     }
-
+    //remakes the square in a new location
     protected void paintComponent(Graphics g){
         g.setColor(Color.green);
         g.fillRect(x, y, width, height);
@@ -37,7 +38,7 @@ implements MouseListener, MouseMotionListener, ActionListener, KeyListener
     public void mouseClicked(MouseEvent e){
 
     }
-
+    //tells if the mouse has selected the rectangle
     public void mousePressed(MouseEvent e){
         mouseFromX = e.getX();
         mouseFromY = e.getY();
@@ -61,7 +62,7 @@ implements MouseListener, MouseMotionListener, ActionListener, KeyListener
     public void mouseExited(MouseEvent e){
 
     }
-
+    //detects where the mouse is
     public void mouseDragged(MouseEvent e){
         int mouseToX = e.getX();
         int mouseToY = e.getY();
@@ -73,40 +74,45 @@ implements MouseListener, MouseMotionListener, ActionListener, KeyListener
     public void mouseMoved(MouseEvent e){
 
     }
-
+    //Moves the square
     public void actionPerformed(ActionEvent e){
         Dimension componentSizeDimension = getSize();
+        //if the square hits the right wall
         if(x + gutterX + width > 525){
             animationDeltaX = 0;
             animationDeltaY = -1;
             x += animationDeltaX*motionSpeed;
             y += animationDeltaY*motionSpeed;
         }
+        //if the square hits the top wall
         if(y + gutterY + height>525){
             animationDeltaX = 1;
             animationDeltaY = 0;
             x += animationDeltaX*motionSpeed;
             y += animationDeltaY*motionSpeed;
         }
+        //if the square hits the left wall
         if(x<gutterX){
             animationDeltaX = 0;
             animationDeltaY = 1;
             x += animationDeltaX*motionSpeed;
             y += animationDeltaY*motionSpeed;
         }
+        //if the square hits the bottom wall
         if(y<gutterY){
             animationDeltaX = -1;
             animationDeltaY = 0;
             x += animationDeltaX*motionSpeed;
             y += animationDeltaY*motionSpeed;
         }
+        //If the square is just existing
         else{
             x += animationDeltaX*motionSpeed;
             y += animationDeltaY*motionSpeed;
         }
         repaint();
     }
-
+    //Speeds up or slows down the cube
     public void keyTyped(KeyEvent e){
         char keyChar = e.getKeyChar();
         if(keyChar == '+'){

@@ -8,6 +8,7 @@ public class MySwingApplication implements Runnable
     JFrame frame;
     CanvasComponent canvasComponent;
     public void run(){
+        //Has all the values for the program
         frame = new JFrame();
         frame.setSize(525, 525);
         frame.setVisible(true);
@@ -16,8 +17,9 @@ public class MySwingApplication implements Runnable
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.addKeyListener(canvasComponent);
     }
-
+    
     public static void main() {
+        //Runs the program
         MySwingApplication mySwingApplicationSwing = new MySwingApplication();
         javax.swing.SwingUtilities.invokeLater(mySwingApplicationSwing);
     }
