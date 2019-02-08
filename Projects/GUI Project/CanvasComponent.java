@@ -83,19 +83,19 @@ implements MouseListener, MouseMotionListener, ActionListener, KeyListener
             y += animationDeltaY*motionSpeed;
         }
         if(y + gutterY + height>525){
-            animationDeltaX = -1;
+            animationDeltaX = 1;
             animationDeltaY = 0;
             x += animationDeltaX*motionSpeed;
             y += animationDeltaY*motionSpeed;
         }
         if(x<gutterX){
-            animationDeltaX = 1;
+            animationDeltaX = 0;
             animationDeltaY = 1;
             x += animationDeltaX*motionSpeed;
             y += animationDeltaY*motionSpeed;
         }
         if(y<gutterY){
-            animationDeltaX = 1;
+            animationDeltaX = -1;
             animationDeltaY = 0;
             x += animationDeltaX*motionSpeed;
             y += animationDeltaY*motionSpeed;
@@ -106,7 +106,7 @@ implements MouseListener, MouseMotionListener, ActionListener, KeyListener
         }
         repaint();
     }
-    
+
     public void keyTyped(KeyEvent e){
         char keyChar = e.getKeyChar();
         if(keyChar == '+'){
@@ -116,12 +116,12 @@ implements MouseListener, MouseMotionListener, ActionListener, KeyListener
             motionSpeed+=-1;
         }
     }
-    
+
     public void keyPressed(KeyEvent e){
-    
+
     }
-    
+
     public void keyReleased(KeyEvent e){
-    
+
     }
 }
