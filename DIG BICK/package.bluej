@@ -1,4 +1,7 @@
 #BlueJ package file
+dependency1.from=GridTester
+dependency1.to=Cell
+dependency1.type=UsesDependency
 editor.fx.0.height=722
 editor.fx.0.width=800
 editor.fx.0.x=410
@@ -13,7 +16,7 @@ package.editor.x=0
 package.editor.y=23
 package.frame.height=600
 package.frame.width=800
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=3
 package.showExtends=true
 package.showUses=true
