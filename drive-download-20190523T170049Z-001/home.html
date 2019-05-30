@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="home.css">
+   <head>
+
+   </head>
+
+   <body>
+      <h1>My First Heading</h1>
+      <p>I heard ya'll liked websites, so if you click the button below, it'll take you to a random site</p>
+   </body>
+   <center><button onclick="newSite(s)"> New Site </button></center>
+   <br>
+   <script>
+     function newSite(){
+       var rand =  Math.floor(Math.random() * (5) + 0);
+       window.location.href = "url('" +newSites[rand]+ "')";
+     }
+//FIX THIS FIPPA
+     var newSites = [
+       "www.youtube.com",
+       "www.youtube.com",
+       "www.youtube.com",
+     ]
+</html>
